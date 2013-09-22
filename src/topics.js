@@ -374,6 +374,8 @@ schema = require('./schema.js'),
 
 				var main_posts = topicPosts.splice(0, 1);
 
+console.log(main_posts)
+
 				callback(null, {
 					'topic_name': topicData.title,
 					'category_name': categoryData.name,

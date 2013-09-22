@@ -67,7 +67,8 @@ var RDB = require('./redis.js'),
 		function getPostSummary(pid, callback) {
 			async.waterfall([
 				function(next) {
-					Posts.getPostFields(pid, ['pid', 'tid', 'content', 'uid', 'timestamp', 'deleted'], function(postData) {
+					Posts.getPostFields(pid, ['pid', 'tid', 'content', 'uid', 'timestamp', 'deleted','revisions'], function(postData) {
+console.log("postData", postData)
 						if (postData.deleted === '1') return callback(null);
 						else {
 							postData.relativeTime = new Date(parseInt(postData.timestamp, 10)).toISOString();
@@ -288,7 +289,8 @@ var RDB = require('./redis.js'),
 								'relativeTime': new Date(timestamp).toISOString(),
 								'post_rep': '0',
 								'edited-class': 'none',
-								'relativeEditTime': ''
+								'relativeEditTime': '',
+								'revisions' : 0,
 							};
 
 						RDB.hmset('post:' + pid, postData);
