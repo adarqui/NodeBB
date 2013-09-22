@@ -75,6 +75,7 @@ var express = require('express'),
 
 	app.use(express.cookieParser()); // If you want to parse cookies (res.cookies)
 	app.use(express.compress());
+	app.use(express.logger())
 	app.use(express.session({
 		store: new RedisStore({
 			client: RDB,
