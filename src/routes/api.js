@@ -29,6 +29,8 @@ var user = require('./../user.js'),
 				config.maximumUsernameLength = meta.config.maximumUsernameLength;
 				config.minimumPasswordLength = meta.config.minimumPasswordLength;
 				config.useOutgoingLinksPage = meta.config.useOutgoingLinksPage;
+				config.postsPerPage = meta.config.postsPerPage;
+console.log(meta.config);
 
 				res.json(200, config);
 			});
